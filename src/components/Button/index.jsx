@@ -1,9 +1,10 @@
-import 'Button.css'
+import './Button.css'
 
-const Button = () => {
+const Button = ({children}) => {
     return (
-        <>
-        </>
+        <button className='button'>
+            {children}
+        </button>
     )
 }
 

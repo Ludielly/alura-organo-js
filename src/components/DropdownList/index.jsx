@@ -1,10 +1,10 @@
 import "./DropdownList.css";
 
-const DropdownList = ({ label, items }) => {
+const DropdownList = ({ label, items, required }) => {
   return (
     <div className="dropdown-list">
       <label>{label}</label>
-      <select>
+      <select required={required}>
         {items.map((item) => (
           <option key={item}>{item}</option>
         ))}
