@@ -4,30 +4,24 @@ import DropdownList from "../DropdownList";
 import InputText from "../InputText";
 import "./Form.css";
 
-const Form = ({handleRegisteredCollaborator}) => {
-  const teams = [
-    "Progamação",
-    "Front-End",
-    "Data Science",
-    "Devops",
-    "UX e Design",
-    "Mobile",
-    "Inovação e Gestão",
-  ];
-
-  const [name, setName] = useState('')
-  const [role, setRole] = useState('')
-  const [image, setImage] = useState('')
-  const [team, setTeam] = useState('')
+const Form = ({ registedCollaborator, teams }) => {
+  const [name, setName] = useState("");
+  const [role, setRole] = useState("");
+  const [image, setImage] = useState("");
+  const [team, setTeam] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleRegisteredCollaborator({
+    registedCollaborator({
       name,
       role,
       image,
-      team
-    })
+      team,
+    });
+    setName("");
+    setRole("");
+    setImage("");
+    setTeam("");
   };
 
   return (
@@ -36,26 +30,32 @@ const Form = ({handleRegisteredCollaborator}) => {
         <h2>Preencha os dados para criar o card do colaborador</h2>
         <InputText
           label="Nome"
-          placeholder="Digite o seu nome"
+          placeholder="Digite o seu name"
           required={true}
           value={name}
-          onHandleChange={value => setName(value)}
+          onHandleChange={(value) => setName(value)}
         />
         <InputText
           label="Cargo"
           placeholder="Digite o seu cargo"
           required={true}
           value={role}
-          onHandleChange={value => setRole(value)}
+          onHandleChange={(value) => setRole(value)}
         />
         <InputText
           label="Imagem"
           placeholder="Digite o endereço da imagem"
           required={true}
           value={image}
-          onHandleChange={value => setImage(value)}
+          onHandleChange={(value) => setImage(value)}
         />
-        <DropdownList items={teams} required={true} />
+        <DropdownList
+          label="Time"
+          items={teams}
+          required={true}
+          value={team}
+          onHandleChange={(value) => setTeam(value)}
+        />
         <Button>Criar Card</Button>
       </form>
     </section>

@@ -1,10 +1,15 @@
 import "./DropdownList.css";
 
-const DropdownList = ({ label, items, required }) => {
+const DropdownList = ({ label, items, required, onHandleChange, value }) => {
   return (
     <div className="dropdown-list">
       <label>{label}</label>
-      <select required={required}>
+      <select
+        onChange={(e) => onHandleChange(e.target.value)}
+        required={required}
+        value={value}
+      >
+        <option value="">-</option>
         {items.map((item) => (
           <option key={item}>{item}</option>
         ))}
